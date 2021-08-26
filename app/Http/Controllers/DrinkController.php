@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Drink;
 use App\Repository\DrinkRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,4 +30,22 @@ class DrinkController extends Controller
             'drink' => $this->drinkRepository->get($drinkId)
         ]);
     }
+
+    public function create()
+    {
+        return view('drinks.create');
+    }
+
+    public function store(Request $request)
+    {
+        $drink = new Drink($request->all());
+
+        $drink->author = Auth::id();
+
+        $drink->save();
+        return redirect()
+            ->route('drinks')
+            ->with('success', 'Drink created');
+    }
+
 }
