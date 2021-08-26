@@ -1,0 +1,54 @@
+.antialiased {
+    background-image: url(../images/party.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+
+}
+
+.antialiased .heading {
+    font-size: 50px;
+    color: white;
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(0,0,0,.5);
+    text-align: center;
+}
+
+.antialiased .content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.antialiased .content .custom-btn {
+    display: block;
+    padding: 20px;
+    text-align: center;
+    width: 20%;
+    border: 1px solid #61cb88;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    border-radius: 30px;
+    background-color: rgba(0,0,0,.5);
+    transition: .3s ease-in;
+}
+.antialiased .content .custom-btn:hover {
+    background-color: #61cb88;
+    color: #1b1e21;
+}
+
+.antialiased .heading .green-color {
+    color: #61cb88;
+    font-size: 70px;
+}
+
+.laravel-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
