@@ -8,7 +8,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $drink->name }}</h5>
                 <p class="card-text">{{ $drink->description }}</p>
-{{--                <a href="{{ route('drinks.show', ['drink' => $drink->id]) }}" class="btn-primary btn">Details</a>--}}
+                <a href="{{ route('drinks.show', ['drink' => $drink->id]) }}" class="btn-primary btn">Details</a>
             </div>
             <p>Created by: {{ $drink->author }}</p>
         </div>

@@ -6,7 +6,6 @@ use App\Models\Drink;
 use App\Repository\DrinkRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use phpDocumentor\Reflection\Types\AbstractList;
 
 class DrinkController extends Controller
 {
@@ -20,7 +19,7 @@ class DrinkController extends Controller
     public function index()
     {
         return view('drinks.list', [
-           'drinks' => $this->drinkRepository->list(),
+           'drinks' => $this->drinkRepository->all(),
         ]);
     }
 
@@ -41,8 +40,11 @@ class DrinkController extends Controller
         $drink = new Drink($request->all());
 
         $drink->author = Auth::id();
+        //dd($drink);
+        //$drink->save();
 
-        $drink->save();
+        $this->drinkRepository->add($drink);
+
         return redirect()
             ->route('drinks')
             ->with('success', 'Drink created');

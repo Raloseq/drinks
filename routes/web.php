@@ -27,13 +27,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('profile/edit', [UserProfileController::class,'edit'])->name('profile.edit');
     Route::post('profile/update', [UserProfileController::class, 'update'])->name('profile.update');
     // USER DRINKS
-    //Route::get('profile/drinks',[UserDrinksController::class,'index'])->name('drinks.list');
-    //Route::get('profile/drinks',[UserDrinksController::class,'add'])->name('drinks.list');
-    //Route::post('profile/drinks',[UserDrinksController::class,'add'])->name('drinks.add');
-    //Route::delete('profile/drinks',[UserDrinksController::class,'remove'])->name('drinks.remove');
+
     // DRINKS
     Route::get('drinks', [DrinkController::class,'index'])->name('drinks');
-    //Route::get('drinks/{drink}', [DrinkController::class,'show'])->name('drinks.show');
+    Route::get('drinks/{drink}', [DrinkController::class,'show'])->name('drinks.show');
     Route::get('drinks/create', [DrinkController::class,'create'])->name('drinks.create');
     Route::post('drinks', [DrinkController::class,'store'])->name('drinks.store');
     // INGREDIENTS

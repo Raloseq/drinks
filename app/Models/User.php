@@ -47,9 +47,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Drink::class,'userDrinks');
     }
-
-    public function addDrink(Drink $drink)
-    {
-        $this->drinks()->save($drink);
-    }
 }

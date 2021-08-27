@@ -8,20 +8,26 @@ use App\Models\Drink;
 
 class DrinkRepository implements DrinkRepositoryInterface
 {
-    private Drink $drinkModel;
-
-    public function __construct(Drink $drinkModel)
-    {
-        $this->drinkModel = $drinkModel;
-    }
+//    private Drink $drinkModel;
+//
+//    public function __construct(Drink $drinkModel)
+//    {
+//        $this->drinkModel = $drinkModel;
+//    }
 
     public function get(int $id)
     {
-        return $this->drinkModel->find($id);
+        return Drink::find($id);
     }
 
-    public function list()
+    public function all()
     {
-        return $this->drinkModel->get();
+        //return $this->drinkModel->get();
+        return Drink::all();
+    }
+
+    public function add($drink)
+    {
+        $drink->save();
     }
 }
