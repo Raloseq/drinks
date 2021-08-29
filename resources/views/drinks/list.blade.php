@@ -13,5 +13,6 @@
             <p>Created by: {{ $drink->author }}</p>
         </div>
     @endforeach
+        <a href="{{ route('drinks.create') }}" class="btn-primary btn">Add drink</a>
     </div>
 @endsection

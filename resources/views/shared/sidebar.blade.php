@@ -6,7 +6,8 @@
         <li><a href="{{ route('profile.edit') }}">Edit profile</a></li>
         <p>Drinks</p>
         <li><a href="{{ route('drinks') }}">Drinks</a></li>
-        <li>Add drink</li>
+        <li><a href="{{ route('drinks.create') }}">Add drink</a></li>
+        <p>Ingredients</p>
         <li><a href="{{ route('ingredients') }}">Ingredients</a></li>
     </ul>
 </nav>

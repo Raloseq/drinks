@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DrinkController;
 use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\UserDrinksController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,9 +27,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('profile/edit', [UserProfileController::class,'edit'])->name('profile.edit');
     Route::post('profile/update', [UserProfileController::class, 'update'])->name('profile.update');
     // USER DRINKS
+
     // DRINKS
     Route::get('drinks', [DrinkController::class,'index'])->name('drinks');
     Route::get('drinks/{drink}', [DrinkController::class,'show'])->name('drinks.show');
+    Route::get('drinks/create', [DrinkController::class,'create'])->name('drinks.create');
+    Route::post('drinks', [DrinkController::class,'store'])->name('drinks.store');
     // INGREDIENTS
     Route::get('ingredients', [IngredientController::class,'index'])->name('ingredients');
 
