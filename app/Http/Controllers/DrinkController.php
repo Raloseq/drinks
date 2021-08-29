@@ -40,8 +40,6 @@ class DrinkController extends Controller
         $drink = new Drink($request->all());
 
         $drink->author = Auth::id();
-        //dd($drink);
-        //$drink->save();
 
         $this->drinkRepository->add($drink);
 
