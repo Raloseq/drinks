@@ -5,6 +5,7 @@ namespace App\Repository;
 
 
 use App\Models\Ingredient;
+use App\Helpers;
 
 class IngredientRepository implements IngredientRepositoryInterface
 {
@@ -20,8 +21,7 @@ class IngredientRepository implements IngredientRepositoryInterface
 
     public function allPaginated()
     {
-        $all = Ingredient::all();
-        return $all->toArray()->paginate(10);
+        return Helpers::paginate(Ingredient::all());
     }
 
     public function filterBy(?string $phrase, ?string $type)
