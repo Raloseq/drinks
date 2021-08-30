@@ -10,6 +10,11 @@
                     <p class="card-text">{{ $drink->description }}</p>
                     <a href="{{ route('drinks.show', ['drink' => $drink->id]) }}" class="btn-primary btn">Details</a>
                     <a href="{{ route('drinks.edit', ['drink' => $drink]) }}" class="btn-primary btn">Edit</a>
+                    <form action="{{ route('drinks.destroy', $drink->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-primary btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
         @endforeach

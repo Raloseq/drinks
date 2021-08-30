@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('drinks/{drink}', [DrinkController::class,'show'])
         ->name('drinks.show')
         ->where('id', '[0-9]+');
-
+    Route::delete('drinks/{drinks}', [DrinkController::class,'destroy'])->name('drinks.destroy');
     // INGREDIENTS
     Route::get('ingredients', [IngredientController::class,'index'])->name('ingredients');
 

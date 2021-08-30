@@ -35,6 +35,12 @@ class DrinkRepository implements DrinkRepositoryInterface
        $drink->save();
     }
 
+    public function destroy(int $drinkId)
+    {
+        $drink = Drink::find($drinkId);
+        $drink->delete();
+    }
+
     public function userDrinks()
     {
         return Drink::where('author', Auth::id())->get();

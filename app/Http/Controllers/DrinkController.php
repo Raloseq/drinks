@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddUserDrink;
 use App\Http\Requests\EditUserDrink;
 use App\Models\Drink;
+use App\Models\User;
 use App\Repository\DrinkRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -68,4 +69,12 @@ class DrinkController extends Controller
             ->with('success', 'Drink updated');
     }
 
+    public function destroy(int $drinkId)
+    {
+        $this->drinkRepository->destroy($drinkId);
+
+        return redirect()
+            ->route('profile.drinks')
+            ->with('success', 'Drink removed');
+    }
 }
