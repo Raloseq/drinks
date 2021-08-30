@@ -19,22 +19,10 @@ class UserDrinksController extends Controller
 
     public function index()
     {
-    }
-
-    public function add(AddUserDrink $request)
-    {
-        $data = $request->validated();
-
-        $user = Auth::user();
-
-        //$user->addDrink($drink);
-        return redirect()
-            ->route('drinks.list')
-            ->with('success', 'Drink shared');
-    }
-
-    public function remove()
-    {
-
+        //dd($this->drinkRepository->userDrinks());
+        return view('profile.drinks.list', [
+            'drinks' => $this->drinkRepository->userDrinks(),
+            'drinksCount' => $this->drinkRepository->userDrinksCount()
+        ]);
     }
 }

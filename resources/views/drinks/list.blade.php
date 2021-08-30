@@ -10,9 +10,10 @@
                 <p class="card-text">{{ $drink->description }}</p>
                 <a href="{{ route('drinks.show', ['drink' => $drink->id]) }}" class="btn-primary btn">Details</a>
             </div>
-            <p>Created by: {{ $drink->author }}</p>
+            <p>Created by: <a href="">{{ $drink->author_name }}</a></p>
+
         </div>
     @endforeach
-        <a href="{{ route('drinks.create') }}" class="btn-primary btn">Add drink</a>
     </div>
+    <a href="{{ route('drinks.create') }}" class="btn-primary btn">Add drink</a>
 @endsection

@@ -40,12 +40,17 @@ class DrinkController extends Controller
         $drink = new Drink($request->all());
 
         $drink->author = Auth::id();
-
+        $drink->author_name = Auth::user()->name;
         $this->drinkRepository->add($drink);
 
         return redirect()
             ->route('drinks')
             ->with('success', 'Drink created');
+    }
+
+    public function edit(Drink $drink)
+    {
+
     }
 
 }
