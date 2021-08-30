@@ -26,13 +26,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('profile', [UserProfileController::class,'index'])->name('profile');
     Route::get('profile/edit', [UserProfileController::class,'edit'])->name('profile.edit');
     Route::post('profile/update', [UserProfileController::class, 'update'])->name('profile.update');
-    // USER DRINKS
+    Route::get('profile/drinks', [UserDrinksController::class,'index'])->name('profile.drinks');
+    Route::get('profile/{profile}',[UserProfileController::class,'show'])->name('profile.show');
+
 
     // DRINKS
     Route::get('drinks', [DrinkController::class,'index'])->name('drinks');
-    Route::get('drinks/{drink}', [DrinkController::class,'show'])->name('drinks.show');
-    Route::get('drinks/create', [DrinkController::class,'create'])->name('drinks.create');
     Route::post('drinks', [DrinkController::class,'store'])->name('drinks.store');
+    Route::get('drinks/create', [DrinkController::class,'create'])->name('drinks.create');
+    Route::get('drinks/{drink}/edit',[DrinkController::class,'edit'])->name('drinks.edit');
+    Route::post('drinks/{drink}', [DrinkController::class,'update'])->name('drinks.update');
+    Route::get('drinks/{drink}', [DrinkController::class,'show'])
+        ->name('drinks.show')
+        ->where('id', '[0-9]+');
+    Route::delete('drinks/{drinks}', [DrinkController::class,'destroy'])->name('drinks.destroy');
     // INGREDIENTS
     Route::get('ingredients', [IngredientController::class,'index'])->name('ingredients');
 
