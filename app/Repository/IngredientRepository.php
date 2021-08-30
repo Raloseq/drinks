@@ -21,7 +21,7 @@ class IngredientRepository implements IngredientRepositoryInterface
 
     public function allPaginated()
     {
-        return Helpers::paginate(Ingredient::all());
+        return Ingredient::all()->paginate(10);
     }
 
     public function filterBy(?string $phrase, ?string $type)
