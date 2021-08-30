@@ -30,6 +30,11 @@ class DrinkRepository implements DrinkRepositoryInterface
         $drink->save();
     }
 
+    public function update($drink)
+    {
+       $drink->save();
+    }
+
     public function userDrinks()
     {
         return Drink::where('author', Auth::id())->get();

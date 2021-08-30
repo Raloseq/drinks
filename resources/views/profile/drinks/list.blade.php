@@ -9,7 +9,7 @@
                     <h5 class="card-title">{{ $drink->name }}</h5>
                     <p class="card-text">{{ $drink->description }}</p>
                     <a href="{{ route('drinks.show', ['drink' => $drink->id]) }}" class="btn-primary btn">Details</a>
-                    <a href="{{ route('drinks.edit', ['drink' => $drink->id]) }}" class="btn-primary btn">Edit</a>
+                    <a href="{{ route('drinks.edit', ['drink' => $drink]) }}" class="btn-primary btn">Edit</a>
                 </div>
             </div>
         @endforeach

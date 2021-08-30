@@ -15,4 +15,9 @@ class UserRepository implements UserRepositoryInterface
 
         $user->save();
     }
+
+    public function show(int $userId)
+    {
+        return User::find($userId);
+    }
 }

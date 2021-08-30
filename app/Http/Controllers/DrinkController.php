@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddUserDrink;
+use App\Http\Requests\EditUserDrink;
 use App\Models\Drink;
 use App\Repository\DrinkRepositoryInterface;
 use Illuminate\Http\Request;
@@ -35,9 +37,9 @@ class DrinkController extends Controller
         return view('drinks.create');
     }
 
-    public function store(Request $request)
+    public function store(AddUserDrink $request)
     {
-        $drink = new Drink($request->all());
+        $drink = new Drink($request->validated());
 
         $drink->author = Auth::id();
         $drink->author_name = Auth::user()->name;
@@ -50,7 +52,20 @@ class DrinkController extends Controller
 
     public function edit(Drink $drink)
     {
+        return view('profile.drinks.edit', [
+            'drink' => $drink
+        ]);
+    }
 
+    public function update(EditUserDrink $request, Drink $drink)
+    {
+        $drink->fill($request->validated());
+
+        $this->drinkRepository->update($drink);
+
+        return redirect()
+            ->route('profile.drinks')
+            ->with('success', 'Drink updated');
     }
 
 }

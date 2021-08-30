@@ -12,6 +12,7 @@ interface DrinkRepositoryInterface
     public function all();
     public function allPaginated();
     public function add($drink);
+    public function update($drink);
     public function userDrinks();
     public function userDrinksCount();
 }
