@@ -20,4 +20,20 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::find($userId);
     }
+
+    public function all()
+    {
+        return User::all();
+    }
+
+    public function allPaginated()
+    {
+        return User::all()->paginate(10);
+    }
+
+    public function destroy(int $userId)
+    {
+        $drink = User::find($userId);
+        $drink->delete();
+    }
 }
