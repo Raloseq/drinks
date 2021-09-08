@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Drink::class,'userDrinks');
     }
+
+    public function isAdmin(): bool
+    {
+        return (bool) $this->admin;
+    }
 }
