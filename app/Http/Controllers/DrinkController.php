@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Repository\DrinkRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class DrinkController extends Controller
 {
@@ -60,6 +61,8 @@ class DrinkController extends Controller
 
     public function update(EditUserDrink $request, Drink $drink)
     {
+        Gate::authorize('update', $drink);
+
         $drink->fill($request->validated());
 
         $this->drinkRepository->update($drink);
