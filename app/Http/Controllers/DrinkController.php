@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddUserDrink;
 use App\Http\Requests\EditUserDrink;
+use App\Http\Requests\RateDrink;
 use App\Models\Drink;
 use App\Models\User;
 use App\Repository\DrinkRepositoryInterface;

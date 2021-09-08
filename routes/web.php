@@ -45,7 +45,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('drinks/{drinks}', [DrinkController::class,'destroy'])->name('drinks.destroy');
     // INGREDIENTS
     Route::get('ingredients', [IngredientController::class,'index'])->name('ingredients');
-
+    // REVIEW
+    Route::resource('review', 'DrinkReviewController');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 });

@@ -21,5 +21,16 @@
             </tr>
         </tbody>
     </table>
+    <form action="{{ route('review.store') }}" method="post">
+        @csrf
+        <label for="headline">Headline</label>
+        <input type="text" class="form-control" name="headline" id="headline">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" name="description" id="description">
+        <label for="rating">Rating</label>
+        <input type="number" class="form-control" name="rating" id="rating">
+        <input type="hidden" value="{{ $drink->id }}" name="drink_id">
+        <button type="submit" class="btn-primary btn m-2">Send</button>
+    </form>
     <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
 @endsection
