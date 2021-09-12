@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\DrinkReview;
 use App\Repository\DrinkReviewRepositoryInterface;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class DrinkReviewController extends Controller
@@ -20,11 +22,11 @@ class DrinkReviewController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        //
+
     }
 
     /**
@@ -58,11 +60,13 @@ class DrinkReviewController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function show($id)
+    public function show($id): View
     {
-        //
+        return view('drinks.show', [
+            'reviews' => $this->drinkReviewRepository->all()
+        ]);
     }
 
     /**

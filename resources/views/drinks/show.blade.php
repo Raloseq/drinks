@@ -32,5 +32,14 @@
         <input type="hidden" value="{{ $drink->id }}" name="drink_id">
         <button type="submit" class="btn-primary btn m-2">Send</button>
     </form>
-    <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
+    @forelse($reviews as $review)
+        <div class="flex-column">
+            <h2>{{ $review->headline }}</h2>
+            <p>{{ $review->description }}</p>
+            <p>{{ $review->rating }}</p>
+        </div>
+    @empty
+        <p>There is no any reviews for this drink</p>
+    @endforelse
+    <a href="{{ route('drinks') }}" class="btn btn-primary">Back</a>
 @endsection

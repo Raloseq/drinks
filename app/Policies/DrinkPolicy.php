@@ -31,7 +31,9 @@ class DrinkPolicy
      */
     public function view(User $user, Drink $drink)
     {
-
+        return $user->id === $drink->author
+            ? Response::allow()
+            : Response::deny('You do not own this drink');
     }
 
     /**

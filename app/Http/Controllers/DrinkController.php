@@ -4,34 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddUserDrink;
 use App\Http\Requests\EditUserDrink;
-use App\Http\Requests\RateDrink;
 use App\Models\Drink;
-use App\Models\User;
 use App\Repository\DrinkRepositoryInterface;
-use Illuminate\Http\Request;
+use App\Repository\DrinkReviewRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class DrinkController extends Controller
 {
     private DrinkRepositoryInterface $drinkRepository;
+    private DrinkReviewRepositoryInterface $drinkReviewRepository;
 
-    public function __construct(DrinkRepositoryInterface $drinkRepository)
+    public function __construct(DrinkRepositoryInterface $drinkRepository, DrinkReviewRepositoryInterface $drinkReviewRepository)
     {
         $this->drinkRepository = $drinkRepository;
+        $this->drinkReviewRepository = $drinkReviewRepository;
     }
 
     public function index()
     {
         return view('drinks.list', [
-           'drinks' => $this->drinkRepository->all(),
+           'drinks' => $this->drinkRepository->all()
         ]);
     }
 
     public function show(int $drinkId)
     {
         return view('drinks.show', [
-            'drink' => $this->drinkRepository->get($drinkId)
+            'drink' => $this->drinkRepository->get($drinkId),
+            'reviews' => $this->drinkReviewRepository->get($drinkId)
         ]);
     }
 
@@ -55,6 +56,8 @@ class DrinkController extends Controller
 
     public function edit(Drink $drink)
     {
+        Gate::authorize('view', $drink);
+
         return view('profile.drinks.edit', [
             'drink' => $drink
         ]);
