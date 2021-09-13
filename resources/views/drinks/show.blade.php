@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="d-flex flex-column">
+        <div style="width: 18rem;">
+            @include('shared.image')
+        </div>
         <table class="table">
             <thead>
             <tr>

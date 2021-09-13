@@ -9,6 +9,7 @@ use App\Repository\DrinkRepositoryInterface;
 use App\Repository\DrinkReviewRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class DrinkController extends Controller
 {
@@ -45,6 +46,8 @@ class DrinkController extends Controller
     public function store(AddUserDrink $request)
     {
         $drink = new Drink($request->validated());
+        $path = $drink['image']->store('drinks', 'public');
+        $drink['image'] = $path;
 
         $drink->author = Auth::id();
         $drink->author_name = Auth::user()->name;
@@ -69,6 +72,18 @@ class DrinkController extends Controller
         Gate::authorize('update', $drink);
 
         $drink->fill($request->validated());
+
+        $path = null;
+        if (!empty($drink['image'])) {
+            $path = $drink['image']->store('drinks', 'public');
+
+            if ($path == null) {
+                $drink['image'] = $path;
+            } else {
+                Storage::disk('public')->delete($drink->image);
+                $drink['image'] = $path;
+            }
+        }
 
         $this->drinkRepository->update($drink);
 

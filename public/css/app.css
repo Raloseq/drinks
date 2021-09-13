@@ -41,6 +41,10 @@
     width: 50px;
     border-radius: 50%;
 }
+
+.drink-img {
+    width: 100%;
+}
 /* END CUSTOM STYLES */
 *,
 *::before,
