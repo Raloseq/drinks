@@ -20,13 +20,13 @@
                 @else
                     <td>User</td>
                 @endif
-                <td>
+                <td class="d-flex">
+                    <a href="{{ route('users.show', ['users' => $user->id]) }}" class="btn-primary btn mr-3">Details</a>
                     <form action="{{ route('users.destroy', $user->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-primary btn-danger">Delete account</button>
                     </form>
-                    <a href="{{ route('users.show', ['users' => $user->id]) }}" class="btn-primary btn">Details</a>
                 </td>
             </tr>
         @endforeach

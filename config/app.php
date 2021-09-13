@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\DrinkReviewProvider;
 use App\Providers\DrinkServiceProvider;
 use App\Providers\IngredientServiceProvider;
 use App\Providers\UserServiceProvider;
@@ -181,7 +182,8 @@ return [
 
         DrinkServiceProvider::class,
         IngredientServiceProvider::class,
-        UserServiceProvider::class
+        UserServiceProvider::class,
+        DrinkReviewProvider::class
 
     ],
 
