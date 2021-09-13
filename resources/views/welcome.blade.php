@@ -33,7 +33,7 @@
             @if (Route::has('login'))
                 <div class="hidden px-6 py-4 sm:block laravel-content">
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline custom-btn">Start sharing</a>
+                        <a href="{{ route('drinks') }}" class="text-sm text-gray-700 underline custom-btn">Start sharing</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline custom-btn">Log in</a>
 
