@@ -10,23 +10,25 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('drinks.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('drinks.store') }}" method="post" enctype="multipart/form-data" style="width: 50%">
         @csrf
-        <label for="avatar">Choose image</label>
-        <input type="file" class="form-control-file" id="image" name="image">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Choose image</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control"/>
 
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" class="input-group-sm"/>
+            <label for="description">Description</label>
+            <textarea type="text" name="description" id="description" class="form-control"></textarea>
 
-        <label for="description">Description</label>
-        <textarea type="text" name="description" id="description" class="input-group-sm"></textarea>
+            <label for="recipe">Recipe</label>
+            <textarea type="text" id="recipe" name="recipe" class="form-control"></textarea>
 
-        <label for="recipe">Recipe</label>
-        <textarea type="text" id="recipe" name="recipe" class="input-group-sm"></textarea>
-
-        <label for="ingredients">Ingredients</label>
-        <textarea name="ingredients" id="ingredients"></textarea>
-
-        <button type="submit" class="btn-primary btn">Create</button>
+            <label for="ingredients">Ingredients</label>
+            <textarea name="ingredients" id="ingredients" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn float-right">Create</button>
     </form>
 @endsection

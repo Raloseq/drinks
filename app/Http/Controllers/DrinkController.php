@@ -15,7 +15,8 @@ class DrinkController extends Controller
     private DrinkRepositoryInterface $drinkRepository;
     private DrinkReviewRepositoryInterface $drinkReviewRepository;
 
-    public function __construct(DrinkRepositoryInterface $drinkRepository, DrinkReviewRepositoryInterface $drinkReviewRepository)
+    public function __construct(DrinkRepositoryInterface $drinkRepository,
+                                DrinkReviewRepositoryInterface $drinkReviewRepository)
     {
         $this->drinkRepository = $drinkRepository;
         $this->drinkReviewRepository = $drinkReviewRepository;
@@ -32,7 +33,7 @@ class DrinkController extends Controller
     {
         return view('drinks.show', [
             'drink' => $this->drinkRepository->get($drinkId),
-            'reviews' => $this->drinkReviewRepository->get($drinkId)
+            'reviews' => $this->drinkReviewRepository->get($drinkId),
         ]);
     }
 

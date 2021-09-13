@@ -33,7 +33,43 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Profile
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a href="{{ route('profile') }}" class="dropdown-item">Profile</a>
+                                <a href="{{ route('profile.edit') }}" class="dropdown-item">Edit profile</a>
+                                <a href="{{ route('profile.drinks') }}" class="dropdown-item">My drinks</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Drinks
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a href="{{ route('drinks') }}" class="dropdown-item">Drinks</a>
+                                <a href="{{ route('drinks.create') }}" class="dropdown-item">Add drink</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ingredients
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a href="{{ route('ingredients') }}" class="dropdown-item">Ingredients</a>
+                            </div>
+                        </li>
+                        @can('admin')
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Users
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a href="{{ route('users') }}" class="dropdown-item">Users</a>
+                                </div>
+                            </li>
+                        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -78,13 +114,12 @@
 
         <main class="py-4">
             @auth()
-                @include('shared.sidebar')
                 @include('shared.messages')
             @endauth
             <div id="layoutAuthentication">
                 <div id="layoutAuthentication_content">
                     <main>
-                        <div class="container-fluid">
+                        <div class="d-flex container-fluid justify-content-center p-5">
                             @yield('content')
                         </div>
                     </main>
