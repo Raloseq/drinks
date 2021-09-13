@@ -7,16 +7,17 @@
         <p>Email: {{ $user->email }}</p>
         <div class="d-flex justify-content-center">
             <div class="mr-3">
-                <p>Added drinks:</p>
+                <p>Drinks:</p>
                 <p>0000000</p>
             </div>
             <div>
-                <p>Number of comments:</p>
+                <p>Comments:</p>
                 <p>0000000</p>
             </div>
         </div>
-        <div class="controls">
-            <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit profile</a>
+        <p>Created at: {{ $user->created_at }}</p>
+        <div class="d-flex">
+            <a href="{{ url()->previous() }}" class="btn-primary btn mr-3">Back</a>
             <a href="{{ route('home') }}" class="btn-primary btn">Back to main page</a>
         </div>
     </div>

@@ -23,6 +23,11 @@ class UserProfileController extends Controller
         ]);
     }
 
+    public function show()
+    {
+        return view('profile.show');
+    }
+
     public function edit()
     {
         return view('profile.edit', [

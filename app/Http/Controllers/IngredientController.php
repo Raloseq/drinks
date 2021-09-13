@@ -26,9 +26,9 @@ class IngredientController extends Controller
         ]);
 
 
-
         return view('ingredients.list', [
-            'ingredients' => $type == 'all' ? $this->ingredientRepository->allPaginated() : $result,
+            'ingredients' => $type == IngredientRepositoryInterface::DEFAULT_TYPE ?
+                $this->ingredientRepository->allPaginated() : $result,
             'type' => $type,
             'phrase' => $phrase
         ]);

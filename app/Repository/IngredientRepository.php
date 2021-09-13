@@ -5,35 +5,29 @@ namespace App\Repository;
 
 
 use App\Models\Ingredient;
+use App\Helpers;
 
 class IngredientRepository implements IngredientRepositoryInterface
 {
-    private Ingredient $ingredientModel;
-
-    public function __construct(Ingredient $ingredientModel)
-    {
-        $this->ingredientModel = $ingredientModel;
-    }
-
     public function get(int $id)
     {
-        return $this->ingredientModel->find($id);
+        return Ingredient::find($id);
     }
 
     public function all()
     {
-        return $this->ingredientModel->get();
+        return Ingredient::all();
     }
 
     public function allPaginated()
     {
-        return $this->ingredientModel->paginate(10);
+        return Ingredient::all()->paginate(10);
     }
 
     public function filterBy(?string $phrase, ?string $type)
     {
         if ($type) {
-            $query = $this->ingredientModel->where('type', $type);
+            $query = Ingredient::where('type', $type);
         }
 
         if ($phrase) {
