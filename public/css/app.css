@@ -36,16 +36,7 @@
   --font-family-sans-serif: "Nunito", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
-/* CUSTOM STYLES */
-.avatar {
-    width: 50px;
-    border-radius: 50%;
-}
 
-.drink-img {
-    width: 100%;
-}
-/* END CUSTOM STYLES */
 *,
 *::before,
 *::after {

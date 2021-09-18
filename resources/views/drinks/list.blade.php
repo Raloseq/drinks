@@ -9,6 +9,13 @@
                 <h5 class="card-title">{{ $drink->name }}</h5>
                 <p class="card-text">{{ $drink->description }}</p>
                 <a href="{{ route('drinks.show', ['drink' => $drink->id]) }}" class="btn-primary btn">Details</a>
+                @role('admin')
+                    <form action="{{ route('drinks.destroy', $drink->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-primary btn-danger">Delete</button>
+                    </form>
+                @endrole
             </div>
             <p class="ml-5">Created by: {{ $drink->author_name }}</p>
         </div>

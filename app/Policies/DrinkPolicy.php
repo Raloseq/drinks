@@ -31,9 +31,15 @@ class DrinkPolicy
      */
     public function view(User $user, Drink $drink)
     {
-        return $user->id === $drink->author
-            ? Response::allow()
-            : Response::deny('You do not own this drink');
+//        return $user->id === $drink->author
+//            ? Response::allow()
+//            : Response::deny('You do not own this drink');
+
+        if ($user === null) {
+            return false;
+        }
+
+        return $user->id == $drink->author;
     }
 
     /**
@@ -44,7 +50,9 @@ class DrinkPolicy
      */
     public function create(User $user)
     {
-        //
+        if ($user->can('create drink')) {
+            return true;
+        }
     }
 
     /**
@@ -56,9 +64,17 @@ class DrinkPolicy
      */
     public function update(User $user, Drink $drink)
     {
-        return $user->id === $drink->author
-            ? Response::allow()
-            : Response::deny('You do not own this drink');
+//        return $user->id === $drink->author
+//            ? Response::allow()
+//            : Response::deny('You do not own this drink');
+
+        if ($user->can('edit drink')) {
+            return $user->id == $drink->author;
+        }
+
+        if ($user->can('edit all drinks')) {
+            return true;
+        }
     }
 
     /**
@@ -68,11 +84,19 @@ class DrinkPolicy
      * @param  \App\Models\Drink  $drink
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Drink $drink)
+    public function delete(User $user, int $drinkId)
     {
-        return $user->id === $drink->author
-            ? Response::allow()
-            : Response::deny('You do not own this drink');
+//        return $user->id === $drink->author
+//            ? Response::allow()
+//            : Response::deny('You do not own this drink');
+        $drink = Drink::find($drinkId);
+        if ($user->can('delete drink')) {
+            return $user->id === $drink->author;
+        }
+
+        if ($user->can('delete any drinks')) {
+            return true;
+        }
     }
 
     /**

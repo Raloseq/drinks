@@ -40,14 +40,18 @@ class DrinkController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Drink::class);
+
         return view('drinks.create');
     }
 
     public function store(AddUserDrink $request)
     {
+        $this->authorize('create', Drink::class);
+
         $drink = new Drink($request->validated());
-        $path = $drink['image']->store('drinks', 'public');
-        $drink['image'] = $path;
+//        $path = $drink['image']->store('drinks', 'public');
+//        $drink['image'] = $path;
 
         $drink->author = Auth::id();
         $drink->author_name = Auth::user()->name;
@@ -60,7 +64,9 @@ class DrinkController extends Controller
 
     public function edit(Drink $drink)
     {
-        Gate::authorize('view', $drink);
+//        Gate::authorize('view', $drink);
+
+        $this->authorize('update', $drink);
 
         return view('profile.drinks.edit', [
             'drink' => $drink
@@ -69,7 +75,9 @@ class DrinkController extends Controller
 
     public function update(EditUserDrink $request, Drink $drink)
     {
-        Gate::authorize('update', $drink);
+//        Gate::authorize('update', $drink);
+
+        $this->authorize('update', $drink);
 
         $drink->fill($request->validated());
 
@@ -94,6 +102,8 @@ class DrinkController extends Controller
 
     public function destroy(int $drinkId)
     {
+        $this->authorize('delete', $drinkId);
+
         $this->drinkRepository->destroy($drinkId);
 
         return redirect()
