@@ -24,14 +24,10 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'create drink']);
 
         $role1 = Role::create(['name' => 'user']);
-        $role1->givePermissionTo('edit drink');
-        $role1->givePermissionTo('delete drink');
-        $role1->givePermissionTo('create drink');
+        $role1->givePermissionTo('edit drink','delete drink','create drink');
 
         $role2 = Role::create(['name' => 'admin']);
-        $role2->givePermissionTo('edit drink');
-        $role2->givePermissionTo('delete drink');
-        $role2->givePermissionTo('create drink');
+        $role2->givePermissionTo('edit drink','delete drink','create drink');
 
         $userAdmin = User::create([
             'name' => 'admin',

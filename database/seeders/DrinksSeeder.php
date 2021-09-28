@@ -17,11 +17,17 @@ class DrinksSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        DB::table('drinks')->insert([
-           'name' =>  $faker->name,
-            'description' => $faker->words($faker->numberBetween(1, 3), true),
-            'ingredients' => $faker->words($faker->numberBetween(1, 2), true),
-            'recipe' => $faker->words($faker->numberBetween(1, 2), true),
-        ]);
+        for ($i = 0; $i < 10; $i++)
+        {
+            DB::table('drinks')->insert([
+                'name' =>  $faker->name,
+                'description' => $faker->words($faker->numberBetween(1, 3), true),
+                'ingredients' => $faker->words($faker->numberBetween(1, 2), true),
+                'recipe' => $faker->words($faker->numberBetween(1, 2), true),
+                'author' => $faker->numberBetween(1,3)
+            ]);
+        }
+
+
     }
 }

@@ -102,7 +102,7 @@ class DrinkController extends Controller
 
     public function destroy(int $drinkId)
     {
-        $this->authorize('delete', $drinkId);
+//        $this->authorize('delete', $drinkId);
 
         $this->drinkRepository->destroy($drinkId);
 
